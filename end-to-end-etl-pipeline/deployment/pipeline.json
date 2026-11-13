@@ -1,4 +1,5 @@
 {
+  "pipeline_id": "51542a78-4f05-4259-bb11-52d6e2219a35",
   "name": "End to End ETL pipline",
   "pipeline_type": "WORKSPACE",
   "catalog": "first_project_alex_the_engineer",
@@ -9,10 +10,13 @@
   "development": false,
   "channel": "CURRENT",
   "edition": "ADVANCED",
+  "root_path": "/Workspace/Users/roygreenfeld1@gmail.com/End to End ETL pipline",
   "libraries": [
     {
       "glob": {
-        "include": ["transformations/**"]
+        "include": [
+          "/Workspace/Users/roygreenfeld1@gmail.com/End to End ETL pipline/transformations/**"
+        ]
       }
     }
   ]
