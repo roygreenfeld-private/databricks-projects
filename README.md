@@ -18,11 +18,9 @@ This repository documents practical experiments, end-to-end implementations, tec
 
 ## Projects
 
-Projects will be listed here as they are developed and documented.
-
 | Project | Focus | Status |
 | --- | --- | --- |
-| *Coming soon* | Data ingestion and validation | In progress |
+| [End-to-End Transactions ETL Pipeline](end-to-end-etl-pipeline/) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
 
 Each project will have its own folder and README with details, results, and instructions.
 
