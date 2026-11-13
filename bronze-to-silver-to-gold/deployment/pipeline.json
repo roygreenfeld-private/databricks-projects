@@ -1,0 +1,23 @@
+{
+  "pipeline_id": "6042d3e7-71bc-4ff7-8e05-2d801386cd63",
+  "name": "Bronze To Silver To Gold ETL Pipline",
+  "pipeline_type": "WORKSPACE",
+  "catalog": "first_project_alex_the_engineer",
+  "schema": "video1",
+  "serverless": true,
+  "photon": true,
+  "continuous": false,
+  "development": false,
+  "channel": "CURRENT",
+  "edition": "ADVANCED",
+  "root_path": "/Workspace/Users/roygreenfeld1@gmail.com/Bronze To Silver To Gold ETL Pipline",
+  "libraries": [
+    {
+      "glob": {
+        "include": [
+          "/Workspace/Users/roygreenfeld1@gmail.com/Bronze To Silver To Gold ETL Pipline/transformations/**"
+        ]
+      }
+    }
+  ]
+}
