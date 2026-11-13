@@ -18,10 +18,10 @@ This repository documents practical experiments, end-to-end implementations, tec
 
 ## Projects
 
-| Project | Focus | Status |
-| --- | --- | --- |
-| [First Project — End-to-End Transactions ETL](first-project/) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
-| [Bronze to Silver to Gold — Users/Signups ETL](bronze-to-silver-to-gold/) | Medallion architecture, S3 CSV cleanup, deduplication, marketing insight tables | Completed |
+| Project | What it answers | Focus | Status |
+| --- | --- | --- | --- |
+| [Sales Transactions ETL](sales-transactions-etl/) | *Sales:* how much is sold each day — daily KPIs (revenue, customers, avg order value) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
+| [User Signups ETL](user-signups-etl/) | *Marketing:* which days and ad channels bring the most signups, from which countries | Medallion architecture, S3 CSV cleanup, deduplication, marketing insight tables | Completed |
 
 Each project has its own folder and README with details, results, and instructions.
 
