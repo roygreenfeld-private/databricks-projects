@@ -20,9 +20,10 @@ This repository documents practical experiments, end-to-end implementations, tec
 
 | Project | Focus | Status |
 | --- | --- | --- |
-| [End-to-End Transactions ETL Pipeline](end-to-end-etl-pipeline/) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
+| [First Project — End-to-End Transactions ETL](first-project/) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
+| [Bronze to Silver to Gold — Users/Signups ETL](bronze-to-silver-to-gold/) | Medallion architecture, S3 CSV cleanup, deduplication, marketing insight tables | Completed |
 
-Each project will have its own folder and README with details, results, and instructions.
+Each project has its own folder and README with details, results, and instructions.
 
 ## Documentation Approach
 
