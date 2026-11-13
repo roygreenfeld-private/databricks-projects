@@ -33,6 +33,17 @@ An orchestration job (`job_to_run_end_to_end_pipline`) is triggered on table upd
 | Silver | `transformations/silver/silver_transactions.py` | Streaming table | Normalizes IDs (trim + uppercase), title-cases and collapses whitespace in text fields, rounds amounts to 2 decimals, drops the empty `_rescued_data` column |
 | Gold | `transformations/gold/daily_transactions_gold.py` | Materialized view | Aggregates silver into daily metrics: transaction count, unique customers, units sold, total revenue, average order value (clustered by `transaction_day`) |
 
+## Deployment
+
+The `deployment/` folder documents the Databricks-side configuration (which normally lives only in the workspace, not in code):
+
+| File | What it captures |
+| --- | --- |
+| `deployment/pipeline.json` | Pipeline settings: publishing catalog/schema, serverless + Photon, library glob (`transformations/**`), trigger mode |
+| `deployment/job.json` | Orchestration job: table-update trigger on the source table, queueing, and the pipeline task |
+
+Together with the source ingestion (an hourly scheduled streaming table created by the file-upload UI), these define the full automated chain: **S3 → source table → job trigger → pipeline → bronze → silver → gold**.
+
 ## Validation and Reliability
 
 Data quality expectations enforced in silver:
@@ -52,8 +63,8 @@ On the sample dataset (Jan 6–26 2025), the gold layer produces 21 daily rows w
 
 ## Reproduction Guide
 
-1. Create a Lakeflow Spark Declarative Pipeline pointing at the `transformations/` folder (glob: `transformations/**`), publishing to a Unity Catalog catalog/schema.
+1. Create a Lakeflow Spark Declarative Pipeline pointing at the `transformations/` folder (glob: `transformations/**`), publishing to a Unity Catalog catalog/schema — see `deployment/pipeline.json`.
 2. Ensure the source streaming table `transactions` exists (created via file upload / Auto Loader from S3).
-3. Run the pipeline; then create a job with a **table update trigger** on the source table so every new ingestion automatically refreshes bronze → silver → gold.
+3. Create a job with a **table update trigger** on the source table so every new ingestion automatically refreshes bronze → silver → gold — see `deployment/job.json`.
 
 **Technologies:** Databricks Lakeflow, PySpark, Delta Lake, Unity Catalog, Auto Loader, AWS S3, Jobs.
