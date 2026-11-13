@@ -8,7 +8,6 @@ This repository documents practical experiments, end-to-end implementations, tec
 
 - **Data ingestion and integration** — Working with cloud storage, files, databases, and APIs.
 - **Data engineering** — Building transformations and pipelines using SQL, Python, and PySpark.
-- **Data quality and validation** — Checking completeness, accuracy, duplicates, schemas, and freshness.
 - **Lakehouse architecture** — Exploring Delta Lake, Unity Catalog, and data organization patterns.
 - **Analytics and BI** — Developing metrics, analytical queries, and dashboards.
 - **Orchestration and monitoring** — Making data workflows repeatable, observable, and maintainable.
@@ -18,10 +17,12 @@ This repository documents practical experiments, end-to-end implementations, tec
 
 ## Projects
 
-| Project | What it answers | Focus | Status |
+**Key difference between the two:** one runs **fully automated** (no human involved) and the other is **run manually by a human**.
+
+| Project | What it answers | How it runs | Focus |
 | --- | --- | --- | --- |
-| [Sales Transactions ETL](sales-transactions-etl/) | *Sales:* how much is sold each day — daily KPIs (revenue, customers, avg order value) | Medallion architecture (bronze → silver → gold), S3 ingestion, data quality expectations, job automation | Completed |
-| [User Signups ETL](user-signups-etl/) | *Marketing:* which days and ad channels bring the most signups, from which countries | Medallion architecture, S3 CSV cleanup, deduplication, marketing insight tables | Completed |
+| [Sales Transactions ETL](sales-transactions-etl/) | *Sales:* daily KPIs — revenue, customers, avg order value | **Automated** — hourly S3 ingestion + table-update job trigger; runs itself | Medallion architecture, streaming tables, data quality expectations, job automation |
+| [User Signups ETL](user-signups-etl/) | *Marketing:* which days and ad channels bring signups, from which countries | **Manual** — started by a human from the pipeline UI | Medallion architecture, S3 CSV cleanup, deduplication, marketing insight tables |
 
 Each project has its own folder and README with details, results, and instructions.
 

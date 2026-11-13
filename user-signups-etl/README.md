@@ -2,7 +2,7 @@
 
 A Lakeflow Spark Declarative Pipeline that cleans a messy S3 user-signup dataset and produces marketing insight tables, following the medallion architecture. Published to Unity Catalog schema `first_project_alex_the_engineer.video1`.
 
-> **What makes this project different:** it answers *marketing* questions — which days of the week and which ad channels bring the most signups, and from which countries. See the sibling project `sales-transactions-etl` for the *sales* version (daily revenue and order KPIs).
+> **What makes this project different:** it answers *marketing* questions — which days of the week and which ad channels bring the most signups, and from which countries. Unlike its sibling project, this pipeline is **run manually by a human**: it has no job trigger and no scheduled ingestion — someone starts it when needed. See `sales-transactions-etl` for the *sales* version (**fully automated**, runs itself).
 
 ## Pipeline Diagram
 
@@ -87,7 +87,7 @@ Sample rows: Thursday × referral → 4 signups / 3 countries; Monday × social_
 | --- | --- |
 | `deployment/pipeline.json` | The real pipeline definition: publishing catalog/schema (`video1`), serverless + Photon, library glob, pipeline ID |
 
-No separate orchestration job — the pipeline runs are started manually or from the pipeline UI; the source table is refreshed by the S3 file upload flow.
+**No orchestration job and no scheduled ingestion — this pipeline is run manually by a human** from the pipeline UI whenever the data needs refreshing. Compare `sales-transactions-etl`, which is fully automated.
 
 ## Validation and Reliability
 

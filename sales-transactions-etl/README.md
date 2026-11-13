@@ -2,7 +2,7 @@
 
 A Lakeflow Spark Declarative Pipeline that turns raw transaction records into clean, analysis-ready data and daily business metrics, following the medallion architecture.
 
-> **What makes this project different:** it answers *sales* questions — how much is sold each day, to how many customers, at what average order value. See the sibling project `user-signups-etl` for the *marketing* version (which days and channels bring signups).
+> **What makes this project different:** it answers *sales* questions — how much is sold each day, to how many customers, at what average order value. Unlike its sibling project, this pipeline is **fully automated**: hourly S3 ingestion plus a table-update job trigger means it **runs itself with no human involved**. See `user-signups-etl` for the *marketing* version (run manually by a human).
 
 ## Pipeline Diagram
 
