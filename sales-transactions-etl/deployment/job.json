@@ -1,6 +1,6 @@
 {
   "job_id": 136332685492141,
-  "name": "job_to_run_end_to_end_pipline",
+  "name": "sales-transactions-etl-trigger",
   "max_concurrent_runs": 1,
   "trigger": {
     "table_update": {

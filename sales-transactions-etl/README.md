@@ -11,7 +11,7 @@ flowchart TD
     S3["🗂 S3 bucket<br/>s3://data-alex-project/transactions<br/>CSV files with raw transactions"]
     ING["⏱ Hourly ingestion pipeline<br/>ST-...endtoend.transactions<br/>(Auto Loader, runs every hour)"]
     SRC["📥 transactions<br/>(source streaming table)"]
-    JOB["⚙️ job_to_run_end_to_end_pipline<br/>trigger: table update"]
+    JOB["⚙️ sales-transactions-etl-trigger<br/>job: table update trigger"]
     B["🥉 bronze_transactions<br/>raw copy, as-is"]
     S["🥈 silver_transactions<br/>cleaned + validated"]
     G["🥇 daily_transactions_gold<br/>daily KPIs (materialized view)"]
@@ -20,6 +20,8 @@ flowchart TD
     SRC -- "new rows" --> JOB
     JOB --> B --> S --> G
 ```
+
+An orchestration job (`sales-transactions-etl-trigger`) is triggered on table update: whenever the source table receives new rows, the pipeline refreshes bronze → silver → gold automatically.
 
 ## The Tables (the solution)
 
@@ -91,9 +93,9 @@ Sample of the actual output:
 The `deployment/` folder exports the real Databricks-side configuration (which normally lives only in the workspace, not in code):
 
 | File | What it captures |
-| --- | --- |
-| `deployment/pipeline.json` | The actual pipeline definition: publishing catalog/schema, serverless + Photon, library glob, pipeline ID |
-| `deployment/job.json` | The actual job: table-update trigger on the source table, queueing, and the pipeline task |
+| --- | --- | --- |
+| `deployment/pipeline.json` | The actual pipeline definition (pipeline name `sales-transactions-etl`): publishing catalog/schema, serverless + Photon, library glob, pipeline ID |
+| `deployment/job.json` | The actual job (`sales-transactions-etl-trigger`): table-update trigger on the source table, queueing, and the pipeline task |
 
 Together with the source ingestion (an hourly scheduled streaming table created by the file-upload UI), these define the full automated chain: **S3 → source table → job trigger → pipeline → bronze → silver → gold**.
 
