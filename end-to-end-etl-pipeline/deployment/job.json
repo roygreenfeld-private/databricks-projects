@@ -1,0 +1,23 @@
+{
+  "name": "job_to_run_end_to_end_pipline",
+  "max_concurrent_runs": 1,
+  "trigger": {
+    "table_update": {
+      "table_names": ["first_project_alex_the_engineer.endtoend.transactions"],
+      "condition": "ALL_UPDATED"
+    }
+  },
+  "queue": {
+    "enabled": true
+  },
+  "performance_target": "PERFORMANCE_OPTIMIZED",
+  "tasks": [
+    {
+      "task_key": "End_To_End_ETL_Pipline",
+      "run_if": "ALL_SUCCESS",
+      "pipeline_task": {
+        "pipeline_id": "<YOUR_PIPELINE_ID>"
+      }
+    }
+  ]
+}

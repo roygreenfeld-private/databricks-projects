@@ -1,0 +1,19 @@
+{
+  "name": "End to End ETL pipline",
+  "pipeline_type": "WORKSPACE",
+  "catalog": "first_project_alex_the_engineer",
+  "schema": "endtoend",
+  "serverless": true,
+  "photon": true,
+  "continuous": false,
+  "development": false,
+  "channel": "CURRENT",
+  "edition": "ADVANCED",
+  "libraries": [
+    {
+      "glob": {
+        "include": ["transformations/**"]
+      }
+    }
+  ]
+}
